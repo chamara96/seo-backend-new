@@ -1,6 +1,6 @@
 # Server Installation
 
-1) Server file structure should be like below. `public_html` folder is alread exist in your server. Create new folder `spotoffers_backend` and add all files of backend to that folder. All public files add to `public_html` folder.
+#### 1) Server file structure should be like below. `public_html` folder is alread exist in your server. Create new folder `spotoffers_backend` and add all files of backend to that folder. All public files add to `public_html` folder.
 ```
 ..
 ..
@@ -9,10 +9,10 @@ public_html/
 ..
 ..
 ```
-public_html https://github.com/chamara96/seo-public
-spotoffers_backend https://github.com/chamara96/seo-backend-new
+- public_html https://github.com/chamara96/seo-public
+- spotoffers_backend https://github.com/chamara96/seo-backend-new
 
-2) Create a MySQL database in your host. Then Import the SQL file `spotoffers_database.sql` inside `spotoffers_backend/database` folder to your recently created database. After the succussfully import, Then chanage the specific lines in `.env` file inside the `spotoffers_backend` folder as below:
+#### 2) Create a MySQL database in your host. Then Import the SQL file `spotoffers_database.sql` inside `spotoffers_backend/database` folder to your recently created database. After the succussfully import, Then chanage the specific lines in `.env` file inside the `spotoffers_backend` folder as below:
 database name,
 databse user username
 databse user password
