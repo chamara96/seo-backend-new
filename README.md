@@ -64,6 +64,25 @@ Pass: 1234
 ```
 
 ---
+
+**7)** Change the all settings under the `/admin/settings`
+
+- **Email for Contact us (email_contact_us)** `email address for receive emails from contact us response`
+- **Email (email)** `Admin email address`
+- **MAIL_HOST (mail_host)** `Admin email host`
+- **MAIL_PORT (mail_port)** `Admin email port`
+- **MAIL_USERNAME (mail_username)** `Admin email username`
+- **MAIL_PASSWORD (mail_password)** `Admin email password`
+- **MAIL_ENCRYPTION (mail_encryption)** `Admin email encryption type`
+
+- **Awaiting Subject (awaiting_subject)** `Subject of Awaiting job response`
+- **Reviewed Subject (reviewed_subject)** `Subject of Reviewd job response`
+- **Rejected Subject (rejected_subject)**   `Subject of Rejected job response`
+
+- **Email Template (email_temp)**   `Body of job response`
+
+---
+
 ### Custom Routes
 
 Clear All Cache
