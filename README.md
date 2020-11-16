@@ -34,23 +34,31 @@ databse user password
 ---
 
 **4)** Go to the therminal of your server. locate to inside the `spotoffers_backend` folder.
-`composer install`
+```sh
+composer install
+```
 
 then type below two commands:
-`php artisan key:generate`
-`php artisan storage:link`
+```sh
+php artisan key:generate
+```
+```sh
+php artisan storage:link
+```
 
 ---
 
-**5)** To Check type below command in the terminal, this command will not be an error. It shoud *Laravel development server started: http://127.0.0.1:8000*
-`php artisan serve`
+**5)** To Check type below command in the terminal, this command will not be an error. This command shoud return *Laravel development server started: http://127.0.0.1:8000*
+```sh
+php artisan serve
+```
 
 ---
 
 **6)** http://www.your-domain.com/admin
 Default login credentials:
 
-```
+```sh
 User: super@admin.com
 Pass: 1234
 ```
@@ -59,7 +67,11 @@ Pass: 1234
 ### Custom Routes
 
 Clear All Cache
-`http://your-domain/clear-cache`
-`http://your-domain/cache`
+```sh
+http://your-domain/clear-cache
+```
+```sh
+http://your-domain/cache
+```
 
 this is a shortcut route clear all cache including config, route and more
