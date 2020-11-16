@@ -9,10 +9,10 @@ public_html/
 ..
 ..
 ```
-- public_html https://github.com/chamara96/seo-public
-- spotoffers_backend https://github.com/chamara96/seo-backend-new
+- **public_html** https://github.com/chamara96/seo-public
+- **spotoffers_backend** https://github.com/chamara96/seo-backend-new
 
-
+---
 
 2) Create a MySQL database in your host. Then Import the SQL file `spotoffers_database.sql` inside `spotoffers_backend/database` folder to your recently created database. After the succussfully import, Then chanage the specific lines in `.env` file inside the `spotoffers_backend` folder as below:
 database name,
@@ -24,14 +24,14 @@ databse user password
 14. DB_PASSWORD=
 ```
 
-
+---
 
 3) Change the `APP_URL` in line 5, to your web domain in the `.env` file inside the `spotoffers_backend` folder as below:
 ```
 5. APP_URL=http://spotoffers.com
 ```
 
-
+---
 
 4) Go to the therminal of your server. locate to inside the `spotoffers_backend` folder.
 `composer install`
@@ -40,12 +40,12 @@ then type below two commands:
 `php artisan key:generate`
 `php artisan storage:link`
 
-
+---
 
 5) To Check type below command in the terminal, this command will not be an error. It shoud *Laravel development server started: http://127.0.0.1:8000*
 `php artisan serve`
 
-
+---
 
 6) http://www.your-domain.com/admin
 Default login credentials:
@@ -55,7 +55,7 @@ User: super@admin.com
 Pass: 1234
 ```
 
-
+---
 ### Custom Routes
 
 Clear All Cache
