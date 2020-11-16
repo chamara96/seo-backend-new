@@ -99,6 +99,15 @@ return [
             [
                 'type'  => 'text', // input fields type
                 'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'mail_encryption', // unique name for field
+                'label' => 'MAIL_ENCRYPTION', // you know what label it is
+                'rules' => 'required', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => 'ssl', // default value if you want
+            ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
                 'name'  => 'awaiting_subject', // unique name for field
                 'label' => 'Awaiting Subject', // you know what label it is
                 'rules' => 'required', // validation rule of laravel

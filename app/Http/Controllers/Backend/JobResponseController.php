@@ -400,7 +400,7 @@ class JobResponseController extends Controller
         $return_val->status = 1;
         $return_val->reviewed_by = auth()->user()->id;
         $return_val->reviewed_by_name = auth()->user()->name;
-        $return_val->save();
+        // $return_val->save();
 
         // mail section
         $data = array(
@@ -414,11 +414,6 @@ class JobResponseController extends Controller
 
         );
 
-        // Mail::send(['text' => 'mail'], $data, function ($message) use ($data) {
-        //     $message->to($data['users_email'], $data['users_firstname'])->subject($data['mail_subject']);
-        //     $message->from($data['sender_mail'], $data['app_name']);
-        // });
-
         $admin_email_setting = \App\Providers\AppServiceProvider::findEnvSetting("email");
 
         Mail::send('mail', $data, function ($mail) use ($data, $admin_email_setting) {
@@ -427,6 +422,7 @@ class JobResponseController extends Controller
             $mail->subject($data['mail_subject']);
         });
         // end mail
+        $return_val->save();
 
         Flash::success("<i class='fas fa-check'></i> New '" . $return_val->users_email . "' Set Awaiting. Email has been sent.")->important();
         return redirect(session()->get('last_url'));
@@ -442,7 +438,7 @@ class JobResponseController extends Controller
         $return_val->status = 2;
         $return_val->reviewed_by = auth()->user()->id;
         $return_val->reviewed_by_name = auth()->user()->name;
-        $return_val->save();
+        // $return_val->save();
 
         // mail section
         $data = array(
@@ -456,11 +452,6 @@ class JobResponseController extends Controller
 
         );
 
-        // Mail::send(['text' => 'mail'], $data, function ($message) use ($data) {
-        //     $message->to($data['users_email'], $data['users_firstname'])->subject($data['mail_subject']);
-        //     $message->from($data['sender_mail'], $data['app_name']);
-        // });
-
         $admin_email_setting = \App\Providers\AppServiceProvider::findEnvSetting("email");
 
         Mail::send('mail', $data, function ($mail) use ($data, $admin_email_setting) {
@@ -470,6 +461,7 @@ class JobResponseController extends Controller
         });
 
         // end mail
+        $return_val->save();
 
         Flash::success("<i class='fas fa-check'></i> New '" . $return_val->users_email . "' Set Awaiting. Email has been sent.")->important();
         return redirect(session()->get('last_url'));
@@ -485,7 +477,7 @@ class JobResponseController extends Controller
         $return_val->status = 3;
         $return_val->reviewed_by = auth()->user()->id;
         $return_val->reviewed_by_name = auth()->user()->name;
-        $return_val->save();
+        // $return_val->save();
 
         // mail section
         $data = array(
@@ -499,11 +491,6 @@ class JobResponseController extends Controller
 
         );
 
-        // Mail::send(['text' => 'mail'], $data, function ($message) use ($data) {
-        //     $message->to($data['users_email'], $data['users_firstname'])->subject($data['mail_subject']);
-        //     $message->from($data['sender_mail'], $data['app_name']);
-        // });
-
         $admin_email_setting = \App\Providers\AppServiceProvider::findEnvSetting("email");
 
         Mail::send('mail', $data, function ($mail) use ($data, $admin_email_setting) {
@@ -513,6 +500,7 @@ class JobResponseController extends Controller
         });
 
         // end mail
+        $return_val->save();
 
         Flash::success("<i class='fas fa-check'></i> New '" . $return_val->users_email . "' Set Awaiting. Email has been sent.")->important();
         return redirect(session()->get('last_url'));

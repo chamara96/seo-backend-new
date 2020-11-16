@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2020 at 11:24 AM
+-- Generation Time: Nov 16, 2020 at 08:32 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `fiverr_test_18`
+-- Database: `spotoffers_database`
 --
 
 -- --------------------------------------------------------
@@ -41,12 +41,21 @@ CREATE TABLE `activity_log` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `activity_log`
+-- Table structure for table `carousels`
 --
 
-INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_id`, `subject_type`, `causer_id`, `causer_type`, `properties`, `created_at`, `updated_at`) VALUES
-(1, 'posts', 'created', 1, 'Modules\\Article\\Entities\\Post', 5, 'App\\Models\\User', '{\"attributes\":{\"name\":\"Chamara\",\"intro\":\"intro 1234\",\"content\":\"<p>hello world 123<\\/p>\\r\\n\\r\\n<h1>Hay guys<\\/h1>\",\"type\":\"Article\",\"category_id\":1,\"category_name\":\"Test\",\"is_featured\":1,\"meta_title\":\"Chamara\",\"meta_keywords\":null,\"meta_description\":null,\"published_at\":\"2020-05-28T06:42:51.000000Z\",\"moderated_at\":null,\"moderated_by\":null,\"status\":1,\"created_by_alias\":null}}', '2020-05-28 07:12:52', '2020-05-28 07:12:52');
+CREATE TABLE `carousels` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image_url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `position` int(4) NOT NULL,
+  `web_url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -129,11 +138,25 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `jobposts` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `jobtitle` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jobdescription` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `intro` text COLLATE utf8mb4_unicode_ci,
   `content` text COLLATE utf8mb4_unicode_ci,
   `type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `featured_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question_1` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answers_1` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question_2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answers_2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question_3` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answers_3` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question_4` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answers_4` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question_5` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answers_5` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question_6` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answers_6` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_keywords` text COLLATE utf8mb4_unicode_ci,
   `meta_description` text COLLATE utf8mb4_unicode_ci,
@@ -153,16 +176,6 @@ CREATE TABLE `jobposts` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `jobposts`
---
-
-INSERT INTO `jobposts` (`id`, `jobtitle`, `jobdescription`, `intro`, `content`, `type`, `category_name`, `meta_title`, `meta_keywords`, `meta_description`, `meta_og_image`, `meta_og_url`, `status`, `moderated_by`, `moderated_at`, `created_by`, `created_by_name`, `created_by_alias`, `updated_by`, `deleted_by`, `published_at`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'test title', 'test description', 'this is introduction', 'this is content', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'codeNET', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-27 19:28:19', '2020-05-27 19:28:19', NULL),
-(3, 'Edited Code GEN International', NULL, 'intructiobdsfk sdf', '<h1>VEGA Innovation 1234</h1>\r\n\r\n<p>codegen internation <em>ABCD</em></p>\r\n\r\n<p><strong>Helooo</strong></p>', 'Article', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'CMB Job', NULL, NULL, NULL, NULL, '2020-05-27 19:34:41', '2020-05-27 20:08:18', NULL),
-(4, 'new Vacancies', NULL, 'This is a golden opportunity', '<blockquote>\r\n<p>Hay there, this is a offer from CodeGen Pvt Ltd.</p>\r\n</blockquote>\r\n\r\n<p>This is awasome.</p>', 'Permanent', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 'Super Admin', NULL, NULL, NULL, NULL, '2020-05-28 15:23:28', '2020-05-28 15:23:28', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -175,23 +188,20 @@ CREATE TABLE `jobresponses` (
   `users_email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `users_cv` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `users_firstname` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `users_telephone` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `users_lastname` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '0',
+  `answer_1` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answer_2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answer_3` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answer_4` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answer_5` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answer_6` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `reviewed_by` int(10) UNSIGNED DEFAULT NULL,
   `reviewed_by_name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `jobresponses`
---
-
-INSERT INTO `jobresponses` (`id`, `jobposts_id`, `users_email`, `users_cv`, `users_firstname`, `users_lastname`, `status`, `reviewed_by`, `reviewed_by_name`, `created_at`, `updated_at`) VALUES
-(1, 3, 'cmbuni2@gmail.com', '/storage/cvs/test1.pdf', 'namal', 'kumara', 2, NULL, NULL, '2020-05-29 01:05:00', '2020-05-30 09:29:54'),
-(2, 4, 'test@123.com', 'aaaa.pdf', 'tharindu', 'shan', 0, NULL, NULL, '2020-05-30 03:38:00', '2020-05-30 03:38:00'),
-(3, 3, 'cmbuni2@gmail.com', '3', 'shavi', 'wick', 0, NULL, NULL, '2020-05-30 09:20:45', '2020-05-30 09:20:45'),
-(4, 3, 'chamara@123.com', 'storage/uploadedcv/chamara@123.com-3.pdf', 'praven', 'chamal', 0, NULL, NULL, '2020-05-30 09:23:18', '2020-05-30 09:23:18');
 
 -- --------------------------------------------------------
 
@@ -222,7 +232,7 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`id`, `model_type`, `model_id`, `collection_name`, `name`, `file_name`, `mime_type`, `disk`, `size`, `manipulations`, `custom_properties`, `responsive_images`, `order_column`, `created_at`, `updated_at`) VALUES
-(2, 'App\\Models\\User', 9, 'users', 'ea90e808b83da220f355c588b255e565', 'ea90e808b83da220f355c588b255e565.jpg', 'image/jpeg', 'public', 612029, '[]', '[]', '[]', 1, '2020-05-29 11:22:16', '2020-05-29 11:22:16');
+(4, 'App\\Models\\User', 1, 'users', 'download (1)', 'download-(1).png', 'image/png', 'public', 4261, '[]', '[]', '[]', 2, '2020-11-16 07:25:39', '2020-11-16 07:25:39');
 
 -- --------------------------------------------------------
 
@@ -257,7 +267,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2020_05_01_163833_create_polymorphic_taggables_table', 1),
 (15, '2020_05_04_151517_create_comments_table', 1),
 (16, '2020_05_27_164643_create_jobposts_table', 2),
-(17, '2020_05_29_175144_create_jobresponses_table', 3);
+(17, '2020_05_29_175144_create_jobresponses_table', 3),
+(18, '2020_05_30_214804_create_carousels_table', 4);
 
 -- --------------------------------------------------------
 
@@ -288,16 +299,7 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\User', 1),
-(2, 'App\\Models\\User', 2),
-(2, 'App\\Models\\User', 8),
-(3, 'App\\Models\\User', 3),
-(3, 'App\\Models\\User', 5),
-(3, 'App\\Models\\User', 8),
-(4, 'App\\Models\\User', 4),
-(4, 'App\\Models\\User', 5),
-(4, 'App\\Models\\User', 9),
-(5, 'App\\Models\\User', 9);
+(1, 'App\\Models\\User', 1);
 
 -- --------------------------------------------------------
 
@@ -389,7 +391,8 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (40, 'view_jobposts', 'web', '2020-05-26 17:38:00', '2020-05-26 17:38:00'),
 (41, 'add_jobposts', 'web', '2020-05-26 17:38:00', '2020-05-26 17:38:00'),
 (42, 'edit_jobposts', 'web', '2020-05-26 17:38:00', '2020-05-26 17:38:00'),
-(43, 'delete_jobposts', 'web', '2020-05-26 17:38:00', '2020-05-26 17:38:00');
+(43, 'delete_jobposts', 'web', '2020-05-26 17:38:00', '2020-05-26 17:38:00'),
+(44, 'access_clients', 'web', '2020-05-31 04:30:00', '2020-05-31 04:30:00');
 
 -- --------------------------------------------------------
 
@@ -404,6 +407,7 @@ CREATE TABLE `posts` (
   `intro` text COLLATE utf8mb4_unicode_ci,
   `content` text COLLATE utf8mb4_unicode_ci,
   `type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `view_type` int(1) DEFAULT '1',
   `category_id` int(10) UNSIGNED DEFAULT NULL,
   `category_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_featured` int(11) DEFAULT NULL,
@@ -428,13 +432,6 @@ CREATE TABLE `posts` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`id`, `name`, `slug`, `intro`, `content`, `type`, `category_id`, `category_name`, `is_featured`, `featured_image`, `meta_title`, `meta_keywords`, `meta_description`, `meta_og_image`, `meta_og_url`, `hits`, `order`, `status`, `moderated_by`, `moderated_at`, `created_by`, `created_by_name`, `created_by_alias`, `updated_by`, `deleted_by`, `published_at`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Chamara', 'chamara', 'intro 1234', '<p>hello world 123</p>\r\n\r\n<h1>Hay guys</h1>', 'Article', 1, 'Test', 1, 'http://127.0.0.1:8000/storage/1344866_5c41.jpg', 'Chamara', NULL, NULL, 'http://127.0.0.1:8000/storage/1344866_5c41.jpg', NULL, 8, NULL, 1, NULL, NULL, 5, 'Chamara Blogjob', NULL, 5, NULL, '2020-05-28 07:12:51', '2020-05-28 07:12:51', '2020-05-30 05:30:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -525,9 +522,13 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (37, 2),
 (38, 2),
 (39, 2),
+(40, 2),
 (40, 4),
+(41, 2),
 (41, 4),
+(42, 2),
 (42, 4),
+(43, 2),
 (43, 4);
 
 -- --------------------------------------------------------
@@ -554,10 +555,10 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `name`, `val`, `type`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'app_name', 'Laravel SEO', 'string', 1, 1, NULL, '2020-05-28 07:17:40', '2020-05-28 07:17:40', NULL),
-(2, 'footer_text', '<a href=\"https://google.lk\">Google</a>', 'string', 1, 1, NULL, '2020-05-28 07:17:40', '2020-05-28 09:29:43', NULL),
+(1, 'app_name', 'SEO', 'string', 1, 1, NULL, '2020-05-28 07:17:40', '2020-06-01 03:28:43', NULL),
+(2, 'footer_text', '<a href=\"http://spotoffers.com\">Spotoffers</a>', 'string', 1, 1, NULL, '2020-05-28 07:17:40', '2020-05-28 09:29:43', NULL),
 (3, 'show_copyright', '1', 'text', 1, 1, NULL, '2020-05-28 07:17:40', '2020-05-28 07:17:40', NULL),
-(4, 'email', 'info@example.com', 'string', 1, 1, NULL, '2020-05-28 07:17:40', '2020-05-28 07:17:40', NULL),
+(4, 'email', 'admin@email.com', 'string', 1, 1, NULL, '2020-05-28 07:17:40', '2020-11-15 17:16:06', NULL),
 (5, 'facebook_url', '#', 'string', 1, 1, NULL, '2020-05-28 07:17:40', '2020-05-28 07:17:40', NULL),
 (6, 'twitter_url', '#', 'string', 1, 1, NULL, '2020-05-28 07:17:40', '2020-05-28 07:17:40', NULL),
 (7, 'linkedin_url', '#', 'string', 1, 1, NULL, '2020-05-28 07:17:41', '2020-05-28 07:17:41', NULL),
@@ -568,7 +569,17 @@ INSERT INTO `settings` (`id`, `name`, `val`, `type`, `created_by`, `updated_by`,
 (12, 'meta_image', 'img/default_banner.jpg', 'text', 1, 1, NULL, '2020-05-28 07:17:42', '2020-05-28 07:17:42', NULL),
 (13, 'meta_fb_app_id', '123456789', 'text', 1, 1, NULL, '2020-05-28 07:17:42', '2020-05-28 09:30:34', NULL),
 (14, 'meta_twitter_site', '@acbd1234', 'text', 1, 1, NULL, '2020-05-28 07:17:42', '2020-05-28 09:30:35', NULL),
-(15, 'meta_twitter_creator', '@abcd1234', 'text', 1, 1, NULL, '2020-05-28 07:17:42', '2020-05-28 09:30:35', NULL);
+(15, 'meta_twitter_creator', '@abcd1234', 'text', 1, 1, NULL, '2020-05-28 07:17:42', '2020-05-28 09:30:35', NULL),
+(16, 'awaiting_subject', 'Your CV is setted as Awating', 'string', 1, 1, NULL, '2020-06-01 08:52:27', '2020-06-01 08:52:27', NULL),
+(17, 'reviewed_subject', 'Your CV is setted as Reviewed', 'string', 1, 1, NULL, '2020-06-01 08:52:27', '2020-06-01 08:52:27', NULL),
+(18, 'rejected_subject', 'Your CV is Rejected', 'string', 1, 1, NULL, '2020-06-01 08:52:27', '2020-06-01 08:52:27', NULL),
+(19, 'mail_host', 'mail_host_url', 'string', 1, 1, NULL, '2020-06-01 10:36:17', '2020-11-15 17:16:07', NULL),
+(20, 'mail_port', 'mail_port', 'string', 1, 1, NULL, '2020-06-01 10:36:17', '2020-11-15 17:16:07', NULL),
+(21, 'mail_username', 'mail_username', 'string', 1, 1, NULL, '2020-06-01 10:36:18', '2020-11-15 17:16:07', NULL),
+(22, 'mail_password', 'mail_password', 'string', 1, 1, NULL, '2020-06-01 10:36:18', '2020-11-15 17:16:07', NULL),
+(23, 'email_temp', 'Hi,\r\nThis email is auto generated corresponding to your application link shows in below.\r\nThank you.', 'string', 1, 1, NULL, '2020-06-01 11:41:07', '2020-06-01 12:09:16', NULL),
+(24, 'email_contact_us', 'info_contactus@email.com', 'string', 1, 1, NULL, '2020-11-15 16:55:19', '2020-11-15 16:55:19', NULL),
+(25, 'mail_encryption', 'ssl', 'string', 1, 1, NULL, '2020-11-16 05:52:41', '2020-11-16 05:52:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -654,15 +665,7 @@ CREATE TABLE `userprofiles` (
 --
 
 INSERT INTO `userprofiles` (`id`, `user_id`, `name`, `first_name`, `last_name`, `username`, `email`, `mobile`, `gender`, `url_website`, `url_facebook`, `url_twitter`, `url_linkedin`, `url_1`, `url_2`, `url_3`, `profile_privecy`, `date_of_birth`, `address`, `bio`, `avatar`, `user_metadata`, `last_ip`, `login_count`, `last_login`, `email_verified_at`, `status`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Super Admin', 'Super', 'Admin', '100001', 'super@admin.com', '731.228.1373 x445', 'Man', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1975-04-20', NULL, NULL, 'img/default-avatar.jpg', NULL, '127.0.0.1', 8, '2020-05-30 09:24:07', NULL, 1, NULL, 1, NULL, '2020-05-26 16:08:51', '2020-05-30 09:24:07', NULL),
-(2, 2, 'Admin Istrator', 'Admin', 'Istrator', '100002', 'admin@admin.com', '1-830-856-4367 x3158', 'Man', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2009-02-11', NULL, NULL, 'img/default-avatar.jpg', NULL, '127.0.0.1', 2, '2020-05-27 16:59:38', NULL, 1, NULL, 2, NULL, '2020-05-26 16:08:51', '2020-05-27 16:59:38', NULL),
-(3, 3, 'CMB Blog', 'CMB', 'Blog', '100003', 'manager@manager.com', '(657) 658-0126 x1341', 'Man', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1976-08-31', NULL, NULL, 'img/default-avatar.jpg', NULL, '127.0.0.1', 1, '2020-05-28 16:51:21', NULL, 1, NULL, 3, NULL, '2020-05-26 16:08:52', '2020-05-28 16:51:21', NULL),
-(4, 4, 'CMB Job', 'CMB', 'Job', '100004', 'executive@executive.com', '1-343-409-6724', 'Man', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Public', '2013-12-10', NULL, NULL, 'img/default-avatar.jpg', NULL, '127.0.0.1', 3, '2020-05-27 12:38:54', NULL, 1, NULL, 4, NULL, '2020-05-26 16:08:52', '2020-05-27 12:38:54', NULL),
-(5, 5, 'Chamara blogjob', 'Chamara', 'blogjob', '100005', 'user@user.com', '384-545-4418 x364', 'Man', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Public', '2009-09-25', NULL, NULL, 'img/default-avatar.jpg', NULL, '127.0.0.1', 1, '2020-05-28 05:14:36', NULL, 1, NULL, 5, NULL, '2020-05-26 16:08:52', '2020-05-28 05:14:36', NULL),
-(6, 6, 'test name test last', 'test name', 'test last', NULL, 'ccc@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'img/default-avatar.jpg', NULL, '127.0.0.1', 1, '2020-05-26 16:13:57', NULL, 1, 1, 6, NULL, '2020-05-26 16:12:29', '2020-05-26 16:13:57', NULL),
-(7, 7, 'second user fff', 'second user', 'fff', NULL, 'aaa@aaa.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'img/default-avatar.jpg', NULL, NULL, 0, NULL, NULL, 1, 1, 2, NULL, '2020-05-26 16:17:57', '2020-05-26 17:58:39', '2020-05-26 17:58:39'),
-(8, 8, 'Shavi Comady', 'Shavi', 'Comady', NULL, 'shavi@123.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'img/default-avatar.jpg', NULL, '127.0.0.1', 1, '2020-05-29 10:38:42', NULL, 1, 1, 8, NULL, '2020-05-29 07:51:48', '2020-05-29 10:38:42', NULL),
-(9, 9, 'Praveen Chamal', 'Praveen', 'Chamal', NULL, 'chamal@123.com', NULL, 'Man', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://127.0.0.1/storage/2/ea90e808b83da220f355c588b255e565.jpg', NULL, '127.0.0.1', 1, '2020-05-29 11:18:09', NULL, 1, 1, 9, NULL, '2020-05-29 11:17:21', '2020-05-29 11:22:17', NULL);
+(1, 1, 'Super Admin', 'Super', 'Admin', '100001', 'super@admin.com', '731.228.1373 x445', 'Man', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Public', '1975-04-20', NULL, NULL, '/storage/4/download-%281%29.png', NULL, '127.0.0.1', 50, '2020-11-16 07:18:54', NULL, 1, NULL, 1, NULL, '2020-05-26 16:08:51', '2020-11-16 07:25:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -695,15 +698,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `first_name`, `last_name`, `username`, `email`, `mobile`, `gender`, `date_of_birth`, `email_verified_at`, `password`, `avatar`, `status`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Super Admin', 'Super', 'Admin', '100001', 'super@admin.com', '731.228.1373 x445', 'Man', '1975-04-20', '2020-05-26 16:08:51', '$2y$10$GkXXj7ZXF0zFesK8LKYzhOPDrZHSx3X6wtowBYoURVZgo8ENoxktW', 'img/default-avatar.jpg', 1, NULL, '2020-05-26 16:08:51', '2020-05-26 16:08:51', NULL),
-(2, 'Admin Istrator', 'Admin', 'Istrator', '100002', 'admin@admin.com', '1-830-856-4367 x3158', 'Man', '2009-02-11', '2020-05-26 16:08:51', '$2y$10$sOtjlxaLE5wWs/4.KtjfNefpRenxUpWYrvQd568dGuIquHALQSj0K', 'img/default-avatar.jpg', 1, NULL, '2020-05-26 16:08:51', '2020-05-26 16:08:51', NULL),
-(3, 'CMB Blog', 'CMB', 'Blog', '100003', 'manager@manager.com', '(657) 658-0126 x1341', 'Man', '1976-08-31', '2020-05-26 16:08:51', '$2y$10$uoJ7ictYys4AmjnFbtsMmuK/fOWInaOhCS2PAQPzqIhKa0mROwmsO', 'img/default-avatar.jpg', 1, NULL, '2020-05-26 16:08:51', '2020-05-26 18:08:53', NULL),
-(4, 'CMB Job', 'CMB', 'Job', '100004', 'executive@executive.com', '1-343-409-6724', 'Man', '2013-12-10', '2020-05-26 16:08:51', '$2y$10$VriEinKD7Tj7ivI5YqzEa.YqZ/bTOYDSmu8eEbMTGJNx297d65J8C', 'img/default-avatar.jpg', 1, NULL, '2020-05-26 16:08:51', '2020-05-26 18:08:26', NULL),
-(5, 'Chamara blogjob', 'Chamara', 'blogjob', '100005', 'user@user.com', '384-545-4418 x364', 'Man', '2009-09-25', '2020-05-26 16:08:51', '$2y$10$vFpnZ9X0AU1EExagx2a5tunEOULI/po1wZLSLZWBtSNuvId0XCYi2', 'img/default-avatar.jpg', 1, NULL, '2020-05-26 16:08:51', '2020-05-26 18:07:12', NULL),
-(6, 'test name test last', 'test name', 'test last', NULL, 'ccc@gmail.com', NULL, NULL, NULL, '2020-05-26 16:12:28', '$2y$10$bT.EMlsiGRlaKVdaRHa1MO/TXkamysBd/NuIvm2SnF6na8kM8GDBK', 'img/default-avatar.jpg', 1, NULL, '2020-05-26 16:12:28', '2020-05-26 17:55:58', '2020-05-26 17:55:58'),
-(7, 'second user fff', 'second user', 'fff', NULL, 'aaa@aaa.com', NULL, NULL, NULL, '2020-05-26 16:17:56', '123456', 'img/default-avatar.jpg', 1, NULL, '2020-05-26 16:17:56', '2020-05-26 17:58:39', '2020-05-26 17:58:39'),
-(8, 'Shavi Comady', 'Shavi', 'Comady', NULL, 'shavi@123.com', NULL, NULL, NULL, '2020-05-29 07:51:47', '$2y$10$91B0KxIPBZW6Ld29DQBAq.4vtd7mY1QKyABRM./nimjqAbR6ZXZDW', 'img/default-avatar.jpg', 1, NULL, '2020-05-29 07:51:47', '2020-05-29 10:36:59', NULL),
-(9, 'Praveen Chamal', 'Praveen', 'Chamal', NULL, 'chamal@123.com', NULL, 'Man', NULL, '2020-05-29 11:17:21', '$2y$10$bFPofGkgg4jmPlqT8mh7h.2.30tZgKIoClpfL5xHYeaacrqCxw09e', 'http://127.0.0.1/storage/2/ea90e808b83da220f355c588b255e565.jpg', 1, NULL, '2020-05-29 11:17:21', '2020-05-29 11:22:16', NULL);
+(1, 'Super Admin', 'Super', 'Admin', '100001', 'super@admin.com', '731.228.1373 x445', 'Man', '1975-04-20', '2020-05-26 16:08:51', '$2y$10$GkXXj7ZXF0zFesK8LKYzhOPDrZHSx3X6wtowBYoURVZgo8ENoxktW', '/storage/4/download-%281%29.png', 1, NULL, '2020-05-26 16:08:51', '2020-11-16 07:25:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -733,6 +728,12 @@ ALTER TABLE `activity_log`
   ADD KEY `activity_log_log_name_index` (`log_name`),
   ADD KEY `subject` (`subject_id`,`subject_type`),
   ADD KEY `causer` (`causer_id`,`causer_type`);
+
+--
+-- Indexes for table `carousels`
+--
+ALTER TABLE `carousels`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `categories`
@@ -875,7 +876,13 @@ ALTER TABLE `user_providers`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `carousels`
+--
+ALTER TABLE `carousels`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -899,37 +906,37 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `jobposts`
 --
 ALTER TABLE `jobposts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `jobresponses`
 --
 ALTER TABLE `jobresponses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -941,7 +948,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `taggables`

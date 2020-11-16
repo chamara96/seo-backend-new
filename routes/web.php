@@ -59,35 +59,6 @@ Route::get('/cache', function () {
 Route::get('sendbasicemail','MailController@basic_email');
 
 
-Route::post('sendmailcontact22', function () {
-
-    // mail('cmb@chamaralabs.com', 'Subject Line Here', 'Body of Message Here', 'From: cmb@chamaralabs.com');
-
-    // $details = [
-    //     'title' => 'Mail from ItSolutionStuff.com',
-    //     'body' => 'This is for testing email using smtp'
-    // ];
-
-    // \Mail::send('mail_contact',
-    //          array(
-    //              'name' => "AAA",
-    //              'email' => "BBB",
-    //              'subject' => "CCC",
-    //              'phone_number' => "DDD",
-    //              'user_message' => "EEE",
-    //          ), function($message)
-    //           {
-    //               $message->from("cmbuni2@gmail.com");
-    //               $message->to('cmb.info96@gmail.com');
-    //           });
-
-    //       return back()->with('success', 'Thank you for contact us!');
-
-    // dd("Email is Sent.");
-    return "On the Function post";
-});
-
-
 Route::get('sendmailcontact', 'MailContactUsController@sendmail_contactus');
 
 

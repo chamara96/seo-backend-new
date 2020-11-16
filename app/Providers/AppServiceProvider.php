@@ -32,10 +32,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        // Schema::defaultStringLength(191);
-        //$this->app->bind('path.public', function () {
-        //    return base_path() . '/../blog.chamaralabs.com';
-        //});
+        $this->app->bind('path.public', function() {
+            return base_path().'/../public_html';
+        });
     }
 
     /**
@@ -52,18 +51,16 @@ class AppServiceProvider extends ServiceProvider
         $smtp_port = $this->findEnvSetting('mail_port');
         $smtp_username = $this->findEnvSetting('mail_username');
         $smtp_password = $this->findEnvSetting('mail_password');
+        $smtp_encryption = $this->findEnvSetting('mail_encryption');
 
 
         $config = array(
             'driver'     => 'smtp',
             'host'       => $smtp_host,
             'port'       => $smtp_port,
-            // 'from'       => array('address' => $mail->from_address, 'name' => $mail->from_name),
-            // 'encryption' => 'TLS',//2020-09-11
-            'encryption' => 'ssl',
+            'encryption' => $smtp_encryption,
             'username'   => $smtp_username,
             'password'   => $smtp_password,
-            // 'sendmail'   => '/usr/sbin/sendmail -bs',
             'pretend'    => false,
         );
         Config::set('mail', $config);
